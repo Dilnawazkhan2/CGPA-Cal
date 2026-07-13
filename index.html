@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAJU CGPA Calculator</title>
+  <meta name="description" content="Mohammad Ali Jinnah University Student GPA & CGPA Calculator — real-time grade computation based on MAJU grading policy." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://nexus.maju.edu.pk/aarsol_custom_loginpage/static/img/maju.png" type="image/png" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ───── Header ───── -->
+    <header class="header">
+      <div class="header__brand">
+        <img src="https://nexus.maju.edu.pk/aarsol_custom_loginpage/static/img/maju.png"
+             alt="MAJU Logo" class="header__logo" />
+        <div>
+          <h1 class="header__title">MAJU CGPA Calculator</h1>
+          <p class="header__subtitle">Mohammad Ali Jinnah University</p>
+        </div>
+      </div>
+      <button class="btn-settings" onclick="openSettings()" title="Settings" id="btn-settings" aria-label="Open settings">⚙</button>
+    </header>
+
+    <!-- ───── Dashboard ───── -->
+    <section class="dashboard" aria-label="Summary statistics">
+      <div class="dash-card dash-card--cgpa">
+        <div class="dash-card__label">Overall CGPA</div>
+        <div class="dash-card__value" id="dash-cgpa">0.00</div>
+        <div class="dash-card__sub" id="dash-cgpa-sub">Add courses to begin</div>
+      </div>
+      <div class="dash-card dash-card--gpa">
+        <div class="dash-card__label">Latest Semester GPA</div>
+        <div class="dash-card__value" id="dash-gpa">0.00</div>
+        <div class="dash-card__sub" id="dash-gpa-sub">No semesters yet</div>
+      </div>
+      <div class="dash-card dash-card--credits">
+        <div class="dash-card__label">Total Credit Hours</div>
+        <div class="dash-card__value" id="dash-credits">0</div>
+        <div class="dash-card__sub">Across all semesters</div>
+      </div>
+      <div class="dash-card dash-card--courses">
+        <div class="dash-card__label">Total Courses</div>
+        <div class="dash-card__value" id="dash-courses">0</div>
+        <div class="dash-card__sub">Across all semesters</div>
+      </div>
+    </section>
+
+    <!-- ───── Semester Controls ───── -->
+    <div class="semester-controls">
+      <h2 class="semester-controls__title">Semesters</h2>
+      <button class="btn btn--primary" onclick="addSemester()" id="btn-add-semester">＋ Add Semester</button>
+    </div>
+
+    <!-- ───── Semester List ───── -->
+    <div class="semesters-list" id="semesters-list">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- ───── Footer ───── -->
+    <footer class="footer">
+      <p>&copy; 2026 Mohammad Ali Jinnah University (MAJU)</p>
+      <p>Built for MAJU students.</p>
+    </footer>
+  </div>
+
+  <!-- ───── Settings Modal ───── -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-label="Settings">
+      <div class="modal__header">
+        <h3 class="modal__title">⚙ Settings</h3>
+        <button class="modal__close" onclick="closeSettings()" aria-label="Close settings">✕</button>
+      </div>
+      <div id="settings-content">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── Toast ───── -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
