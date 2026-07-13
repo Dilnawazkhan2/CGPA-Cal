@@ -865,6 +865,7 @@ body {
 }
 
 /* ---------- Responsive ---------- */
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .app {
     padding: var(--space-md) var(--space-sm);
@@ -906,6 +907,113 @@ body {
 
   .semester-body__inner {
     padding: var(--space-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Prevent table rendering behavior */
+  .course-table-wrap {
+    border: none;
+  }
+  
+  .course-table, 
+  .course-table thead, 
+  .course-table tbody, 
+  .course-table th, 
+  .course-table td, 
+  .course-table tr {
+    display: block;
+  }
+  
+  /* Hide headers */
+  .course-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  /* Style rows as card lists */
+  .course-table tbody tr {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .course-table tbody tr:hover {
+    background: var(--bg-card);
+  }
+  
+  /* Stacking the td with label */
+  .course-table tbody td {
+    border: none;
+    padding: var(--space-xs) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    text-align: right;
+  }
+  
+  /* Label generation */
+  .course-table tbody td[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    text-align: left;
+  }
+  
+  /* Input sizing on mobile */
+  .course-table input,
+  .course-table select {
+    width: 60%;
+    max-width: 180px;
+    text-align: right;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .course-table input.input--name {
+    width: 60%;
+    max-width: 180px;
+    text-align: right;
+  }
+  
+  .course-table .cell-computed,
+  .course-table .grade-badge {
+    text-align: right;
+  }
+
+  /* Make sure the delete button aligns beautifully at the bottom of the card */
+  .course-table tbody td:last-child {
+    justify-content: center;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-xs);
+  }
+  
+  .btn-delete-course {
+    width: 100%;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: var(--error-dim);
+    color: var(--error);
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-delete-course::before {
+    content: "Remove Course";
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-right: var(--space-sm);
   }
 }
 

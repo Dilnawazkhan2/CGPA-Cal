@@ -298,15 +298,15 @@ function renderCourseTable(sem) {
   const rows = sem.courses.map((c, ci) => {
     const comp = computeCourse(c);
     const gradeCell = isMarks
-      ? `<td><span class="grade-badge grade-badge--${comp.badgeClass}" id="badge-${sem.id}-${c.id}">${comp.letter}</span></td>`
-      : `<td>
+      ? `<td data-label="Grade"><span class="grade-badge grade-badge--${comp.badgeClass}" id="badge-${sem.id}-${c.id}">${comp.letter}</span></td>`
+      : `<td data-label="Grade">
           <select id="input-${sem.id}-${c.id}-grade" onchange="setCourseField('${sem.id}','${c.id}','manualGrade',this.value)">
             ${GRADING_SCALE.map(g => `<option value="${g.letter}" ${c.manualGrade === g.letter ? 'selected' : ''}>${g.letter}</option>`).join('')}
           </select>
         </td>`;
 
     const marksCell = isMarks
-      ? `<td>
+      ? `<td data-label="Marks">
           <input type="number" id="input-${sem.id}-${c.id}-marks" min="0" max="100" value="${c.marks}" placeholder="0–100"
                  oninput="setCourseField('${sem.id}','${c.id}','marks',this.value)" />
         </td>`
@@ -314,18 +314,18 @@ function renderCourseTable(sem) {
 
     return `
     <tr>
-      <td>
+      <td data-label="Course Name">
         <input type="text" class="input--name" id="input-${sem.id}-${c.id}-name" value="${escHtml(c.name)}" placeholder="Course Name"
                oninput="setCourseField('${sem.id}','${c.id}','name',this.value)" />
       </td>
-      <td>
+      <td data-label="Credits">
         <input type="number" id="input-${sem.id}-${c.id}-credits" min="1" max="6" value="${c.credits}"
                oninput="setCourseField('${sem.id}','${c.id}','credits',this.value)" />
       </td>
       ${marksCell}
       ${gradeCell}
-      <td class="cell-computed" id="gp-${sem.id}-${c.id}">${comp.points.toFixed(2)}</td>
-      <td class="cell-computed" id="qp-${sem.id}-${c.id}">${comp.qualityPoints.toFixed(2)}</td>
+      <td class="cell-computed" data-label="Grade Pts" id="gp-${sem.id}-${c.id}">${comp.points.toFixed(2)}</td>
+      <td class="cell-computed" data-label="Quality Pts" id="qp-${sem.id}-${c.id}">${comp.qualityPoints.toFixed(2)}</td>
       <td>
         <button class="btn-delete-course" onclick="removeCourse('${sem.id}','${c.id}')" title="Delete course">✕</button>
       </td>
