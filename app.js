@@ -20,6 +20,9 @@ const GRADING_SCALE = [
 ];
 
 function getGradeFromMarks(marks) {
+  if (marks === '' || marks === null || marks === undefined) {
+    return { letter: '—', points: 0, badgeClass: 'na' };
+  }
   const m = Math.round(Number(marks));
   if (isNaN(m) || m < 0) return { letter: '—', points: 0, badgeClass: 'na' };
   const clamped = Math.min(m, 100);
@@ -106,14 +109,20 @@ function loadState() {
 // ──────────────────────────────────────────────
 function computeCourse(course) {
   let grade;
+  let hasValue = true;
   if (settings.gradingMode === 'marks') {
-    grade = getGradeFromMarks(course.marks);
+    if (course.marks === '' || course.marks === null || course.marks === undefined) {
+      grade = { letter: '—', points: 0, badgeClass: 'na' };
+      hasValue = false;
+    } else {
+      grade = getGradeFromMarks(course.marks);
+    }
   } else {
     grade = getGradeFromLetter(course.manualGrade);
   }
   const credits = Number(course.credits) || 0;
   const qualityPoints = credits * grade.points;
-  return { ...grade, qualityPoints, credits };
+  return { ...grade, qualityPoints, credits, hasValue };
 }
 
 function computeSemester(semester) {
@@ -121,7 +130,7 @@ function computeSemester(semester) {
   for (const c of semester.courses) {
     const comp = computeCourse(c);
     const cr = comp.credits;
-    if (cr > 0) {
+    if (cr > 0 && comp.hasValue) {
       totalQP += comp.qualityPoints;
       totalCr += cr;
       courseCount++;
