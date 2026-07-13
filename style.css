@@ -640,10 +640,19 @@ body {
   border-radius: var(--radius-xl);
   width: 90%;
   max-width: 480px;
-  padding: var(--space-xl);
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: var(--space-lg);
   transform: translateY(16px) scale(0.97);
   transition: transform 0.3s var(--ease-out);
   box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: var(--space-md);
+    width: 95%;
+  }
 }
 
 .modal-overlay.active .modal {
