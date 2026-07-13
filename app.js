@@ -319,10 +319,6 @@ function renderCourseTable(sem) {
                oninput="setCourseField('${sem.id}','${c.id}','name',this.value)" />
       </td>
       <td>
-        <input type="text" class="input--code" id="input-${sem.id}-${c.id}-code" value="${escHtml(c.code)}" placeholder="Code"
-               oninput="setCourseField('${sem.id}','${c.id}','code',this.value)" />
-      </td>
-      <td>
         <input type="number" id="input-${sem.id}-${c.id}-credits" min="1" max="6" value="${c.credits}"
                oninput="setCourseField('${sem.id}','${c.id}','credits',this.value)" />
       </td>
@@ -342,7 +338,6 @@ function renderCourseTable(sem) {
       <thead>
         <tr>
           <th>Course Name</th>
-          <th>Code</th>
           <th>Credits</th>
           ${headerMarks}
           ${headerGrade}
