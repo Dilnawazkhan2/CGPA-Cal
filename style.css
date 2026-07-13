@@ -448,7 +448,7 @@ body {
 }
 
 .semester-block.open .semester-body {
-  max-height: 2000px;
+  max-height: 10000px;
 }
 
 .semester-body__inner {
