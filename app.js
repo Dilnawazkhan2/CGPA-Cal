@@ -6,17 +6,17 @@
 // Grading Policy
 // ──────────────────────────────────────────────
 const GRADING_SCALE = [
-  { min: 86, max: 100, letter: 'A',  points: 4.00 },
-  { min: 82, max: 85,  letter: 'A-', points: 3.67 },
-  { min: 78, max: 81,  letter: 'B+', points: 3.33 },
-  { min: 74, max: 77,  letter: 'B',  points: 3.00 },
-  { min: 70, max: 73,  letter: 'B-', points: 2.67 },
-  { min: 66, max: 69,  letter: 'C+', points: 2.33 },
-  { min: 62, max: 65,  letter: 'C',  points: 2.00 },
-  { min: 58, max: 61,  letter: 'C-', points: 1.67 },
-  { min: 54, max: 57,  letter: 'D+', points: 1.33 },
-  { min: 50, max: 53,  letter: 'D',  points: 1.00 },
-  { min: 0,  max: 49,  letter: 'F',  points: 0.00 },
+  { min: 86, max: 100, letter: 'A', points: 4.00 },
+  { min: 82, max: 85, letter: 'A-', points: 3.67 },
+  { min: 78, max: 81, letter: 'B+', points: 3.33 },
+  { min: 74, max: 77, letter: 'B', points: 3.00 },
+  { min: 70, max: 73, letter: 'B-', points: 2.67 },
+  { min: 66, max: 69, letter: 'C+', points: 2.33 },
+  { min: 62, max: 65, letter: 'C', points: 2.00 },
+  { min: 58, max: 61, letter: 'C-', points: 1.67 },
+  { min: 54, max: 57, letter: 'D+', points: 1.33 },
+  { min: 50, max: 53, letter: 'D', points: 1.00 },
+  { min: 0, max: 49, letter: 'F', points: 0.00 },
 ];
 
 function getGradeFromMarks(marks) {
@@ -191,10 +191,10 @@ function updateComputedValues() {
 
     // Update semester header stats
     const semGPA = document.getElementById(`sem-gpa-${sem.id}`);
-    const semCr  = document.getElementById(`sem-cr-${sem.id}`);
+    const semCr = document.getElementById(`sem-cr-${sem.id}`);
     const semCnt = document.getElementById(`sem-cnt-${sem.id}`);
     if (semGPA) semGPA.textContent = semComp.gpa.toFixed(2);
-    if (semCr)  semCr.textContent = semComp.totalCr;
+    if (semCr) semCr.textContent = semComp.totalCr;
     if (semCnt) semCnt.textContent = sem.courses.length;
   }
 
